@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上海医药</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+</head>
+<body>
+<div class="content_body">
+    <!--添加积分器-->
+    <div class="head_tittle">
+        <img src="image/head.png" class="head">
+        <span class="point-number"><b>0</b></span>
+    </div>
+    <img src="image/superman.png" class="superman">
+</div>
+
+<!--规则模态框-->
+<div class="modal none">
+    <img src="image/words.png" class="words">
+    <img src="image/superman.png" class="superman1">
+    <img src="image/phone.png" class="phone">
+    <img src="image/hand.png" class="hand">
+</div>
+
+<!--游戏结束弹出模态框-->
+<div class="model none">
+    <div class="vmark">
+        <b class="number">0</b>
+    </div>
+    <img src="image/list_btn.png" class="btn1" onclick="javascript:window.open('name_list.html','_self')">
+    <img src="image/again_btn.png" class="again" onclick="javascript:window.open('game.html','_self')">
+
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="./js/Jumper.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var isStart = false;
+        var container = document.getElementsByClassName('content_body');
+        var jumper = document.getElementsByClassName('superman');
+        // 游戏效果
+        var jumperPlugin = new Jumper({
+            container: container[0],
+            jumper: jumper[0],
+        });
+        const timer = setInterval(function () {
+            $('.modal').fadeIn()
+        }, 500);
+        $('.content_body').click(function () {
+            jumperPlugin.jump();
+        });
+        $('.modal').click(function () {
+            if (isStart) return
+            clearInterval(timer);
+            $(this).fadeOut();
+            jumperPlugin.generate({
+                src: 'image/yan_shi.png',
+                type: 2,
+                width: 130,
+                x: -45,
+                y: 0,
+            });
+            jumperPlugin.generate({
+                src: 'image/yan_shi.png',
+                type: 2,
+                width: 130,
+                x: document.body.clientWidth - 75,
+                y: 0,
+            });
+            jumperPlugin.generate({
+                src: 'image/yan_shi.png',
+                type: 2,
+                width: 130,
+                x: -45,
+                y: 200,
+            });
+            jumperPlugin.generate({
+                src: 'image/yan_shi.png',
+                type: 2,
+                width: 130,
+                x: document.body.clientWidth - 75,
+                y: 200,
+            });
+            jumperPlugin.generate({
+                src: 'image/yan_shi.png',
+                type: 2,
+                width: 130,
+                x: -45,
+                y: 350,
+            });
+            jumperPlugin.generate({
+                src: 'image/yan_shi.png',
+                type: 2,
+                width: 130,
+                x: document.body.clientWidth - 75,
+                y: 350,
+            });
+
+            // 自动生成岩石
+            var rockTimer = setInterval(function () {
+                jumperPlugin.generate({
+                    src: 'image/yan_shi.png',
+                    type: 2,
+                    width: 120,
+                    x: -(Math.random() * 75),
+                    y: -100,
+                });
+                jumperPlugin.generate({
+                    src: 'image/yan_shi.png',
+                    type: 2,
+                    width: 120,
+                    x: Math.random() * 130 + (document.body.clientWidth - 170),
+                    y: -100,
+                });
+            }, 1500);
+
+            // 自动生成糖果
+            var candyTimer = setInterval(function () {
+                jumperPlugin.generate({
+                    width: 35,
+                    x: Math.random() * (document.body.clientWidth - 100 * 2) + 100,
+                    y: -100,
+                    src: 'image/suger.png',
+                    type: 1
+                })
+            }, 800);
+
+            // 游戏结束触发事件
+            jumperPlugin.onOver = function() {
+                $('.number').text($('.point-number b').text());
+                clearInterval(rockTimer);
+                clearInterval(candyTimer);
+                $('.model').fadeIn();
+            };
+
+            // 吃到糖果加分
+            jumperPlugin.onScore = function() {
+                $('.point-number b').text(Number($('.point-number b').text()) + 50);
+                // 音乐响起来
+                $('body').append('<audio autoplay src="image/music.mp3">')
+            };
+            jumperPlugin.start();
+            isStart = true;
+        });
+
+
+
+        //ajax提交数据
+        //     $.ajax({
+        //         type: "post",
+        //         // url:,
+        //         data: {
+        //             "score": $('.point-number b').text()
+        //         },
+        //         dataType: "json",
+        //         success: function (data) {
+        //
+        //         },
+        //         error: function () {
+        //             alert('ajax error');
+        //         },
+        //
+        //     });
+
+    })
+</script>
+</body>
+</html>

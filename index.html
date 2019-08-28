@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上海医药</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+</head>
+<body>
+<div class="content_body">
+    <img src="image/logo.png" class="logo"/>
+    <img src="image/tittle1.png" class="tittle"/>
+    <img src="image/start_btn.png" class="start" onclick="javascript:window.open('game.html','_self')"/>
+    <img src="image/list_btn.png" class="name_list" onclick="javascript:window.open('name_list.html','_self')"/>
+</div>
+
+<!--规则模态框-->
+<div class="modal none">
+    <div class="swiper-container swiper-container1" id="banner">
+        <div class="swiper-wrapper swiper-wrapper1">
+            <div class="swiper-slide swiper-slide1"><img src="image/roal1.png" class="rule"/></div>
+            <div class="swiper-slide swiper-slide1"><img src="image/roal2.png" class="rule rule1"></div>
+        </div>
+        <!--底部按钮-->
+        <div class="swiper-pagination "></div>
+    </div>
+</div>
+
+
+<div class="modal-one none">
+    <!--恭喜你，你中奖了-->
+    <div class="vmark none">
+        <img src="image/zhong_jiang.png" class="ready  "/>
+        <img src="image/go_btn.png" class="btn2  ">
+    </div>
+
+    <!--没有中奖-->
+    <div class="vmark1 none">
+        <img src="image/no_good.png" class="ready1  "/>
+        <img src="image/list_btn.png" class="btn2  ">
+    </div>
+
+    <!--活动已经结束-->
+    <div class="vmark2 none">
+        <img src="image/game_end.png" class="end "/>
+    </div>
+
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script rel="script" type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+    // 轮播图
+    var mySwiper1 = new Swiper('.swiper-container1', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    $(function () {
+        const timer = setInterval(function () {
+            $('.modal').fadeIn()
+        }, 500);
+
+        $('.rule1').click(function () {
+            clearInterval(timer);
+            $('.modal').fadeOut()
+        });
+
+        $('.modal-one').click(function () {
+            $(this).fadeOut()
+        })
+    })
+</script>
+
+</body>
+</html>

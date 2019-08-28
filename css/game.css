@@ -1,0 +1,212 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: relative;
+    /*overflow: auto;
+    -webkit-overflow-scrolling: touch;*/
+}
+
+.none {
+    display: none;
+}
+
+.content_body {
+    width: 100%;
+    height: 100%;
+    background: url("../image/bg1.jpg") no-repeat center center;
+    background-size: 100% 100%;
+    /*background-position: center;*/
+    /*padding-bottom: 2vh;*/
+    position: relative;
+    overflow: hidden;
+    /*overflow: auto;
+    -webkit-overflow-scrolling: touch;*/
+}
+
+.head_tittle {
+    width: 100%;
+    height: 30vw;
+    position: relative;
+    /*padding: 3vh 5% 2vh 5%;*/
+    /*background: red;*/
+}
+.head {
+    width: 20%;
+    height: auto;
+    position: absolute;
+    left:8%;
+    top:3.2vh;
+    border-radius: 50%;
+}
+.point-number {
+    display: block;
+    position: absolute;
+    left:34%;
+    top:6vh;
+    font-size: 2rem;
+    color: white;
+
+}
+.yan_shi1{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    left:-25%;
+    top:36vh;
+}
+.yan_shi2{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    right:-25%;
+    top:32vh;
+}
+.suger{
+    width: 15%;
+    height: auto;
+    position: absolute;
+    right:42.5%;
+    top:32vh;
+}
+.superman{
+    width: 60px;
+    left: 100px;
+    top: 100px;
+    height: auto;
+    position: absolute;
+}
+
+/*规则模态框*/
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*overflow: auto;*/
+}
+.words{
+    width: 90%;
+    height: auto;
+    position: absolute;
+    left:5%;
+    top:5vh;
+}
+.superman1{
+    width: 20%;
+    height: auto;
+    position: absolute;
+    left:40%;
+    top:20vh;
+
+}
+.phone{
+    width: 30%;
+    height: auto;
+    position: absolute;
+    left:35%;
+    top:50vh;
+    animation: myfirst 1.5s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes myfirst {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+.hand{
+    width: 28%;
+    height: auto;
+    position: absolute;
+    left:36%;
+    top:71vh;
+    animation: shake 550ms infinite;
+}
+@keyframes shake {
+    from {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+
+/*游戏结束弹出模态框*/
+.model{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+.vmark{
+    width: 60%;
+    height: 45vw;
+    background: url("../image/game_over.png") no-repeat center center;
+    background-size: 100% 100%;
+    /*padding-bottom: 2vh;*/
+    /*background: red;*/
+    margin-top: 25vh;
+    margin-left: 20%;
+    position: relative;
+
+}
+.number{
+    display: block;
+    width: 100%;
+    /*background: pink;*/
+    color: red;
+    font-size: 7vw;
+    text-align: center;
+    position: absolute;
+    top:28vw;
+    letter-spacing: 2px;
+}
+.btn1{
+    width: 40%;
+    height: auto;
+    margin-top: 5vh;
+    margin-left: 30%;
+    /*position: absolute;*/
+    /*left:20%;*/
+    /*top:40vw;*/
+}
+.again{
+    width: 40%;
+    height: auto;
+    margin-top: 3vh;
+    margin-left: 30%;
+    /*position: absolute;*/
+    /*left:20%;*/
+    /*top:51vw;*/
+}
